@@ -19,6 +19,7 @@ hash      = crypto.createHash('ripemd160').update(hash).digest()
 var checksum  = Buffer.concat([(version = new Buffer('00', 'hex')), hash])
 checksum  = crypto.createHash('sha256').update(checksum).digest()
 checksum  = crypto.createHash('sha256').update(checksum).digest().slice(0,4)
+// I havnt updated my encoding package to support bitcoin.. so
 const address   = require('bs58').encode(Buffer.concat([version, hash, checksum]))
 
 console.log(address) // Send money here
